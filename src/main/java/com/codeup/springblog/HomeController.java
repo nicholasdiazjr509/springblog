@@ -19,7 +19,7 @@ public class HomeController {
 //            pass info to our views, similar to rs
 //            its reference
             model.addAttribute("author", author );
-            return "quote";
+            return "quotes";
         }
     }
 
