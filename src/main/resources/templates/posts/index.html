@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http//www.thymeleaf.org">
+<!--&lt;!&ndash;<head th:replace="partials/head :: head('Posts')">&ndash;&gt;????????????????????-->
+  <head>
     <meta charset="UTF-8">
+    <script th:replace="partials/bootstrap :: scripts"></script>
     <title>Index</title>
+    <link rel="stylesheet" href="">
+
+<th:block th:include="partials/bootstrap :: styling"></th:block>
 </head>
 <body>
+    <nav th:replace="partials/navbar :: navbar"></nav>
+    <h2>Viewing all posts.</h2>
+
+    <div th:each="post : ${posts}">
+        <h3 th:text="${post.title}">Title</h3>
+        <h3 th:body="${post.body}">Body</h3>
+    </div>
+
+    <th:block th:replace="partials/bootstrap :: scripts"></th:block>
 
 </body>
 </html>
