@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HomeController {
     @GetMapping("/")
     public String home() {
-        return "Welcome!";
+        return "welcome";
 //pass data using a "model" for the template
 }
         @GetMapping("/quote-of-the-day/by/{author}")

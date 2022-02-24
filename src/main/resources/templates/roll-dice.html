@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="partials/header :: header">
+    <meta charset="UTF-8">
+    <title>Rollin' the Dice</title>
+    <script  th:replace="partials/bootstrap :: styling"></script>
+</head>
+<body>
+<div>
+<!--      questions: do I need a div? or use nav tag?-->
+    <nav th:replace="partials/navbar :: navbar"></nav>
+        <h1>Pick your guess from below</h1>
+        <ul>
+            <li><a th:href="@{/roll-dice/1}">Guess 1</a></li>
+            <li><a th:href="@{/roll-dice/2}">Guess 2</a></li>
+            <li><a  th:href="@{/roll-dice/3}">Guess 3</a></li>
+            <li><a th:href="@{/roll-dice/4}">Guess 4</a></li>
+            <li><a  th:href="@{/roll-dice/5}">Guess 5</a></li>
+            <li><a th:href="@{/roll-dice/6}">Guess 6</a></li>
+        </ul>
+
+        <h2>You guessed: <span th:text="${n}"> </span></h2>
+        <h3><span th:text="${userNumber}">Random Number </span></h3>
+        <h2 th:text="${falseOrTrue}"></h2>
+
+</div>
+<br><br>
+<footer th:replace="partials/footer :: footer">Dice-roll (footer)</footer>
+</body>
+</html>
