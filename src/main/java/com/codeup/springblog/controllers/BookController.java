@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class BookController {
-    private  BookRepository bookDao;
+    private  final BookRepository bookDao;
 
 //    ?to inject it with the dependency. all the methods from JPA repository
     public BookController(BookRepository bookDao){
