@@ -15,9 +15,6 @@ public class HelloController {
     public String hello() {
         return "<h1>Hello from Springblog!</h1>" ;
     }
-
-
-
 //    @GetMapping("/hello")
 //    @ResponseBody
 //    public String hello(@PathVariable String name, Model model) {
@@ -26,9 +23,11 @@ public class HelloController {
 //    }
 
     @GetMapping("/hello/{name}")
-    public String hello(@PathVariable String name){
+    public String hello(@PathVariable String name) {
         return "Hello, " + name + " !";
     }
+
+
     @GetMapping("/test")
     @ResponseBody
     public String test() {
@@ -39,8 +38,9 @@ public class HelloController {
     public String showJoinForm(){
         return "join";
     }
+    
     @PostMapping("/join")
-    public String joinCohort(@RequestParam(name = "cohort") String cohort, Model model){
+    public String joinCohort(@RequestParam(name = "cohort") String cohort, Model model) {
         model.addAttribute("cohort", "Hello! Welcome to " + cohort + "!");
         return "join";
     }
@@ -51,14 +51,22 @@ public class HelloController {
     //red no method attached
     @ResponseBody
     //establish method
-    public String increment(@PathVariable int number){
+    public String increment(@PathVariable int number) {
         return number + " plus " + (number + 1) + "! ";
         //increment 1 time
     }
+
     @GetMapping("/number/{num}")
     @ResponseBody
-    public String displayNumber(@PathVariable int num){
+    public String displayNumber(@PathVariable int num) {
         //must use the value of method to return the value of the integer as a string object.
         return String.valueOf(num);
+    }
+    // Passing a collection of data
+    @GetMapping("/greek-gods")
+    public String showGreekGods(Model model) {
+        String[] names = {"Zeus", "Hercules", "Hades", "Apollo"};
+        model.addAttribute("greekGods", names);
+        return "greekGods";
     }
 }

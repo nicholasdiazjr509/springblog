@@ -1,4 +1,5 @@
 package com.codeup.springblog.models;
+
 import javax.persistence.*;
 
 @Entity
@@ -21,7 +22,6 @@ public class Post {
         this.title = title;
         this.body = body;
     }
-
     public Post() {
     }
 
@@ -48,8 +48,4 @@ public class Post {
     public void setBody(String body) {
         this.body = body;
     }
-
-
-
-
 }

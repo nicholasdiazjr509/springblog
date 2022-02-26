@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http//www.thymeleaf.org">
+<head th:fragment="partials/head :: head('View Posts')">
+
+    <meta charset="UTF-8">
+
+    <title>Show</title>
+    <th:block th:include="partials/bootstrap :: styling"></th:block>
+</head>
+<body>
+
+    <nav th:replace="partials/navbar :: navbar"></nav>
+    <h1> Hey there!!</h1>
+
+
+    <div>
+        <div th:th:text="${postId}">Id</div>
+        <div th:th:text="${postTitle}">Title</div>
+        <div th:th:text="${postBody}">Body</div>
+    </div>
+
+<footer th:replace="partials/footer :: footer"></footer>
+
+    <th:block th:replace="partials/bootstrap :: scripts"></th:block>
+
+</body>
+</html>

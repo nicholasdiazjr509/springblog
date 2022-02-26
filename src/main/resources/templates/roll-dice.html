@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="partials/header :: header">
+    <meta charset="UTF-8" />
+    <title>Rollin' the Dice</title>
+    <th:block th:include="partials/bootstrap :: styling"></th:block>
+
+<!--    <script  th:replace="partials/bootstrap :: styling"></script>-->
+<!--    <link th:href="@{/css/main.css}" rel="stylesheet">-->
+</head>
+<body>
+<th:block th:replace="partials/bootstrap :: scripts"></th:block>
+
+<!--      questions: do I need a div? or use nav tag?-->
+    <nav th:replace="partials/navbar :: navbar" />
+        <h1>Pick your guess from below</h1>
+
+          <a th:href="@{/roll-dice/1}">Guess 1</a>
+             <a th:href="@{/roll-dice/2}">Guess 2</a>
+             <a  th:href="@{/roll-dice/3}">Guess 3</a>
+             <a th:href="@{/roll-dice/4}">Guess 4</a>
+            <a  th:href="@{/roll-dice/5}">Guess 5</a>
+             <a th:href="@{/roll-dice/6}">Guess 6</a>
+        <h3 th:text="${result}"></h3>
+
+<div class="display" >
+
+        <h2>You guessed: <span th:text="${n}"> </span></h2>
+        <h3>The random number was: <span th:text="${userNumber}"> </span></h3>
+        <h2 th:text="${falseOrTrue}"></h2>
+
+</div>
+<br><br>
+<footer th:replace="partials/footer :: footer">Dice-roll (footer)</footer>
+
+</body>
+</html>

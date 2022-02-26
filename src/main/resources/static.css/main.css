@@ -1,0 +1,13 @@
+h1 {
+    color: aqua;
+}
+.display{
+    font-size: 32px;
+    padding-left: 230px;
+}
+p{
+    background: #ffe5e5;
+    color: darkred;
+    padding: 125px;
+    margin-left: 15px;
+}
