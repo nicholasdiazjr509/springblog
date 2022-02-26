@@ -12,13 +12,6 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-//    forgot the constructor !!!!!
-    public Book(long id, String title, String author) {
-        this.id = id;
-        this.title = title;
-        this.author = author;
-    }
-
     //could also use the 'name - "nameGoesHere"' argument to establish
     //a specific name that differs from the name of the field.
     @Column(nullable = false, length = 100)//for a NOT null FIELD
@@ -26,6 +19,13 @@ public class Book {
 
     @Column(nullable = false)//unique is false by default-, unique = true arg
     private String author;
+
+    //    forgot the constructor !!!!!
+    public Book(long id, String title, String author) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+    }
 
     public Book() {
     }
@@ -40,11 +40,6 @@ public class Book {
 
     public Book(String author) {
         this.author = author;
-    }
-
-    public Book(long id, String title) {
-        this.id = id;
-        this.title = title;
     }
 
     public long getId() {
