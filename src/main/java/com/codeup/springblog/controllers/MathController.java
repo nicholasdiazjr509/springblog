@@ -1,4 +1,4 @@
-package com.codeup.springblog;
+package com.codeup.springblog.controllers;
 ///add/3/and/4 	7
 ///subtract/3/from/10 	7
 ///multiply/4/and/5 	20
