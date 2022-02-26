@@ -1,13 +1,23 @@
 package com.codeup.springblog.models;
 
+
 import javax.persistence.*;
 
+
+
 @Entity
-@Table(name = "posts")
-public class Post {
+@Table(name = "books")
+public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+//    forgot the constructor !!!!!
+    public Book(long id, String title, String author) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+    }
 
     //could also use the 'name - "nameGoesHere"' argument to establish
     //a specific name that differs from the name of the field.
@@ -15,14 +25,26 @@ public class Post {
     private String title;
 
     @Column(nullable = false)//unique is false by default-, unique = true arg
-    private String body;
+    private String author;
 
-    public Post(long id, String title, String body) {
+    public Book() {
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public Book(String author) {
+        this.author = author;
+    }
+
+    public Book(long id, String title) {
         this.id = id;
         this.title = title;
-        this.body = body;
-    }
-    public Post() {
     }
 
     public long getId() {
@@ -41,11 +63,4 @@ public class Post {
         this.title = title;
     }
 
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
 }

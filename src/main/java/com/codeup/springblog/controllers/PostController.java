@@ -7,6 +7,7 @@ package com.codeup.springblog.controllers;
 //
 //
 import com.codeup.springblog.models.Post;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,36 +20,39 @@ import java.util.*;
 @Controller
 public class PostController {
 
-    @GetMapping("/posts")
-     //@ResponseBody
-        public String index(Model model){
-            List<Post> posts = new ArrayList<>();
 
-            posts.add(new Post("One post", "First"));
-            posts.add(new Post("Second post", "Second"));
-
-            model.addAttribute("posts", posts);
-            return "posts/index" ;
+        @GetMapping("/posts")
+        @ResponseBody
+        public String viewPosts(){
+            return "posts index page";
         }
 
         @GetMapping("/posts/{id}")
-        public String postDetails(@PathVariable long id, Model model) {
-
-            Post post = new Post("new title", "new body");
-            model.addAttribute("postId", id);
-            model.addAttribute("post", post);
-            return "posts/show" ;
+        @ResponseBody
+        public String postDetails(@PathVariable long id) {
+            return "view an individual post" ;
         }
         @GetMapping("/posts/create")
         @ResponseBody
-            public String showCreateForm() {
-                return "view the form for creating a post";
-            }
-
+            public String showCreateForm(){
+                    return "view the form for individual post";
+        }
         @PostMapping("/post/create")
-        @ResponseBody
+            @ResponseBody
             public String submitCreateForm() {
             return "create a new post";
     }
-
+    @GetMapping("/posts/{id}/edit")
+        public String edit(@PathVariable long id, Model view){
+            view.addAttribute("post");
+               return "posts/edit";
+    }
+    @PostMapping("/posts/{id}/edit")
+    public String updatePost(@PathVariable long id, @ModelAttribute Post post) {
+        return "redirect: /posts/" + id;
+    }
+    @PostMapping("/posts/{id}/delete")
+    public String delete(@PathVariable long id) {
+            return "redirect:/posts/" + id;
+    }
 }

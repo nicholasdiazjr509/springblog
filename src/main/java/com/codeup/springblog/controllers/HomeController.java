@@ -10,6 +10,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HomeController {
     @GetMapping("/")
+    @ResponseBody
+    public String home() {
+        return "This is the landing page!";
+
+    }
+}
+
     public String home() {
         return "welcome";
 //pass data using a "model" for the template

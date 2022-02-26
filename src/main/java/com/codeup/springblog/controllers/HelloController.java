@@ -13,10 +13,8 @@ public class HelloController {
     @GetMapping("/hello")
     @ResponseBody
     public String hello() {
-        return "<h1>Hello from Springblog!</h1>";
+        return "<h1>Hello from Springblog!</h1>" ;
     }
-
-
 //    @GetMapping("/hello")
 //    @ResponseBody
 //    public String hello(@PathVariable String name, Model model) {
@@ -29,6 +27,7 @@ public class HelloController {
         return "Hello, " + name + " !";
     }
 
+
     @GetMapping("/test")
     @ResponseBody
     public String test() {
@@ -36,10 +35,10 @@ public class HelloController {
     }
 
     @GetMapping("/join")
-    public String showJoinForm() {
+    public String showJoinForm(){
         return "join";
     }
-
+    
     @PostMapping("/join")
     public String joinCohort(@RequestParam(name = "cohort") String cohort, Model model) {
         model.addAttribute("cohort", "Hello! Welcome to " + cohort + "!");
@@ -70,5 +69,4 @@ public class HelloController {
         model.addAttribute("greekGods", names);
         return "greekGods";
     }
-
 }
