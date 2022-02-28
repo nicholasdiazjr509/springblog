@@ -17,6 +17,10 @@ public class Post {
     @Column(nullable = false)//unique is false by default-, unique = true arg
     private String body;
 
+    @ManyToOne
+    @JoinColumn (name = "title_id")
+    private User user;
+
     public Post(long id, String title, String body) {
         this.id = id;
         this.title = title;
@@ -53,5 +57,11 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
+    }
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
     }
 }
