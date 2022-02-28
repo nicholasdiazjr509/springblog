@@ -22,7 +22,13 @@ public class Post {
         this.title = title;
         this.body = body;
     }
+
     public Post() {
+    }
+
+    public Post(String title, String body) {
+        this.title = title;
+        this.body = body;
     }
 
     public long getId() {

@@ -6,7 +6,7 @@
     <th:block th:include="partials/bootstrap :: styling"></th:block>
 </head>
 <body>
-<form action="@{/posts/edit}" method="POST">
+<form th:action="@{/posts/create}" th:method="POST">
     <div class="form-group">
         <label for="title">Title</label>
         <input type="email" class="form-control" id="title">
