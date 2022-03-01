@@ -9,21 +9,55 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 //    or should it be a LONG????
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 100, unique = true)
     private String username;
 
     @Column(nullable = false, length = 100)
     private String password;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 100, unique = true)
     private String email;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
 
+    public User() {
+
+    }
+    public User(String username, String email, String password, List<Post> posts){
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.posts = posts;
+    }
+
+
+
+    public User(long id, String username, String email, String password, List<Post> posts){
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.posts = posts;
+    }
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 
     public void setUsername(String username) {
         this.username = username;
@@ -33,22 +67,8 @@ public class User {
         this.username = username;
     }
 
-    public User(int id, String username) {
-        this.id = id;
-        this.username = username;
-    }
 
-    public User(int id, String username, String email) {
-        this.id = id;
-        this.username = username;
-        this.email = email;
-    }
-
-    public User() {
-
-    }
-
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -56,17 +76,7 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
-    }
 
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-
-    public String getPassword() {
-        return password;
-    }
 
     public void setPassword(String password) {
         this.password = password;
@@ -79,10 +89,5 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-
-//    public String getUsers() {
-//        return users;
-//    }
-//
 
 }
