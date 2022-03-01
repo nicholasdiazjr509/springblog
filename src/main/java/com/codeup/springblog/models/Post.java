@@ -18,7 +18,7 @@ public class Post {
     private String body;
 
     @ManyToOne
-    @JoinColumn (name = "title_id")
+    @JoinColumn (name = "user_id")
     private User user;
 
     public Post(long id, String title, String body) {
@@ -30,10 +30,10 @@ public class Post {
     public Post() {
     }
 
-    public Post(String title, String body) {
-        this.title = title;
-        this.body = body;
-    }
+//    public Post(String title, String body) {
+//        this.title = title;
+//        this.body = body;
+//    }
 
     public long getId() {
         return id;
