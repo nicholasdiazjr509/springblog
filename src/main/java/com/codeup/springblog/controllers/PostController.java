@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class PostController {
     private UserRepository usersDao;
-   private PostRepository postsDao;
+    private PostRepository postsDao;
     private final EmailService emailService;
 
     public PostController(UserRepository usersDao,PostRepository postsDao, EmailService emailService) {
@@ -48,10 +48,8 @@ public class PostController {
     @GetMapping("/posts")
     public String viewPosts(Model model) {
         model.addAttribute("allPosts", postsDao.findAll());
-
         return "posts/index";
     }
-
 
     @GetMapping("/posts/{id}")
     public String postDetails(@PathVariable long id, Model model) {
@@ -71,6 +69,7 @@ public class PostController {
     public String submitCreateForm(@ModelAttribute Post newPost) {
         //Post newPost = new Post(title, body);
         newPost.setUser(usersDao.getById(1L));
+        emailService.prepareAndSend(newPost, "testing", "Did this work");
         postsDao.save(newPost);
 
         return "redirect:/posts";
@@ -104,10 +103,10 @@ public class PostController {
         postsDao.deleteById(id);
         return "redirect:/posts";
     }
-    @GetMapping("/send-email")
-    public String sendEmail(){
-        emailService.prepareAndSend("Testing", "Hope it worked");
-        return "redirect:/";
-    }
+//    @GetMapping("/send-email")
+//    public String sendEmail(){
+//        emailService.prepareAndSend("Testing", "Hope it worked");
+//        return "redirect:/";
+//    }
 
 }
