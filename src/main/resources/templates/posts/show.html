@@ -7,6 +7,7 @@
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
+
     <div class="card" style="width: 18rem;">
         <div class="card-body">
             <h4 class="card-title" th:text="${post.title()}">Card title</h4>
@@ -17,14 +18,12 @@
     </div>
 <!--    <nav th:replace="partials/navbar :: navbar"></nav>-->
 <!--    <h1> Hey there!!</h1>-->
-
-
 <!--    <div>-->
 <!--        <div th:th:text="${postId}">Id</div>-->
 <!--        <div th:th:text="${postTitle}">Title</div>-->
 <!--        <div th:th:text="${postBody}">Body</div>-->
 <!--    </div>-->
-
+  
 <!--<footer th:replace="partials/footer :: footer"></footer>-->
 
     <th:block th:replace="partials/bootstrap :: scripts"></th:block>
