@@ -20,7 +20,13 @@ public class Book {
     @JoinColumn (name = "author_id")
     private Author author;
 
-    @ManyToMany(mappedBy = "books")
+//    @ManyToMany(mappedBy = "books")
+    @ManyToMany
+    @JoinTable(
+    name = "books_genres",
+    joinColumns = {@JoinColumn(name="book_id")},
+    inverseJoinColumns = {@JoinColumn(name = "genre_id")}
+    )
     private List<Genre> genres;
 
     public Book(){}

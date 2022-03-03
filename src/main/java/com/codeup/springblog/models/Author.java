@@ -4,6 +4,7 @@ package com.codeup.springblog.models;
 import net.bytebuddy.asm.Advice;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "authors")
@@ -14,8 +15,17 @@ public class Author {
     @Column(nullable = false)
     private String name;
 
+//    had missed this!
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "author")
+    private List<Book> books;
+
     public Author() {
 
+    }
+    public Author(long id, String name, List<Book> books) {
+        this.id = id;
+        this.name = name;
+        this.books = books;
     }
     public Author(Long id, String name) {
         this.id = id;
