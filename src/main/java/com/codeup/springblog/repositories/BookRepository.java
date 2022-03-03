@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
-    List<Book> findAll(Book title);
+//    List<Book> findAll(Book title);
     // Will return a SINGLE book with the matching title.
     Book findBookByTitle(String title);
 //

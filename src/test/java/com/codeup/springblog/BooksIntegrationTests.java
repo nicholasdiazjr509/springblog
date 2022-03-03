@@ -91,7 +91,7 @@ public class BooksIntegrationTests {
     // CREATE
     @Test
     public void testCreateBook() throws Exception{
-        // Makes a post request to /books/create and expecta redirection to the book.
+        // Makes a post request to /books/create and expects redirection to the book.
         this.mvc.perform(post("/books/create").with(csrf())
                         .session((MockHttpSession) httpSession)
                         .param("title", "Alice in Wonderland")
