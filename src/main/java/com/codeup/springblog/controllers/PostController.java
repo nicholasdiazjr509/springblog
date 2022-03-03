@@ -92,11 +92,11 @@ public class PostController {
 //        Post postToEdit = postsDao.getById(id);
 //        postToEdit.setTitle(title);
 //        postToEdit.setBody(body);
+//
         postsDao.save(postToEdit);
         return "redirect:/posts";
     }
-
-
+//
     @GetMapping("/posts/{id}/delete")
     public String delete(@PathVariable long id) {
         postsDao.deleteById(id);
