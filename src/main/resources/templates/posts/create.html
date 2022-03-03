@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="partials/head :: head('Create a Post')">
     <meta charset="UTF-8"/>
     <title>Create a Post</title>
     <th:block th:include="partials/bootstrap :: styling"></th:block>
 </head>
 <body>
+<nav th:replace="partials/navbar :: navbar"></nav>
 <!--<form th:action="@{/posts/create}">-->
 
 <!--        <div class=form-group>-->
@@ -18,18 +19,20 @@
 <!--        </div>-->
 <!--    <button type="submit">SUBMIT</button>-->
 <!--</form>-->
-<form th:action="@{/posts/create}" th:method="POST" th:object="${newPost}">
+<div clas="container mt-4">
+<form th:action="@{/posts/create}" th:method="POST" >
     <div class="form-group">
         <label for="title">Post Title</label>
-        <input type="text" class="form-control" id="title" name="title" th:field="*{title}">
+        <input type="text" class="form-control" id="title" name="title" >
     </div>
 
     <div class="form-group">
         <label for="body">Body</label>
-        <textarea class="form-control" id="body" rows="3" name="body" th:field="*{body}"></textarea>
+        <textarea class="form-control" id="body" rows="3" name="body"></textarea>
     </div>
     <button type="submit">Create</button>
 </form>
+</div>
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
 </body>
 </html>

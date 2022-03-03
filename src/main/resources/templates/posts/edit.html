@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8"/>
     <title>Edit a Post</title>
     <th:block th:include="partials/bootstrap :: styling"></th:block>
 </head>
 <body>
+<nav th:replace="partials/navbar :: navbar"></nav>
 <form th:action="@{/posts/{id}/edit (id = ${postToEdit.getId()})}" th:method="POST" th:object="${postToEdit}">
     <div class="form-group">
         <label for="title">Title</label>
@@ -18,6 +19,10 @@
     </div>
     <button type="submit">Submit</button>
 </form>
+<!--<div class="card-body" th:each="post : ${allPosts}">-->
+<!--    <h5 class="card-title" th:text="${post.getTitle()}">Card title</h5>-->
+<!--    <p class="card-text" th:text="${post.getBody()}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+<!--</div>-->
 <th:block th:replace="partials/bootstrap :: scripts"></th:block>
 </body>
 </html>
