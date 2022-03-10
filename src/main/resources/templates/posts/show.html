@@ -7,15 +7,31 @@
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
+        <h2>The post you selected: </h2>
+    <div th:if="${post}">
+        <h2 th:text="${post.getTitle()}"></h2>
+        <p th:text="${post.getBody()}"></p>
+        <p th:text="${post.user.email}"></p>
+        <div th:if="${isPostOwner}">
+            <form th:action="@{/posts/{id}/delete(id = ${post.id})}" method="post" th:object="${post}">
+                <button class="card-link" type="submit" th:value="*{id}" name="deletePost">Delete</button>
 
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h4 class="card-title" th:text="${post.title()}">Card title</h4>
-            <p class="card-text" th:text="${post.body()}">Quick example to build on the card title
-                and make up the bulk of card's content</p>
+            </form>
+            <form th:action="@{/posts/{id}/edit(id = ${post.id})}" method="get" th:object="${post}">
+                <button class="card-link" type="submit" th:value="*{id}" name="editPost">Edit</button>
+            </form>
         </div>
-        <h4>You can email this user : <span th:text="${post.getUser().getEmail()}"></span></h4>
+
     </div>
+
+<!--    <div class="card" style="width: 18rem;">-->
+<!--        <div class="card-body">-->
+<!--            <h4 class="card-title" th:text="${post.title()}">Card title</h4>-->
+<!--            <p class="card-text" th:text="${post.body()}">Quick example to build on the card title-->
+<!--                and make up the bulk of card's content</p>-->
+<!--        </div>-->
+<!--        <h4>You can email this user : <span th:text="${post.getUser().getEmail()}"></span></h4>-->
+<!--    </div>-->
 <!--    <nav th:replace="partials/navbar :: navbar"></nav>-->
 <!--    <h1> Hey there!!</h1>-->
 <!--    <div>-->

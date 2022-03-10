@@ -8,29 +8,23 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    //could also use the 'name - "nameGoesHere"' argument to establish
-    //a specific name that differs from the name of the field.
-    @Column(nullable = false, length = 100)//for a NOT null FIELD
+    @Column(nullable = false, length = 150)
     private String title;
-
-    @Column(nullable = false)//unique is false by default-, unique = true arg
+    @Column(nullable = false)
     private String body;
-
     @ManyToOne
-    @JoinColumn (name = "user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
-    public Post(long id, String title, String body) {
-        this.id = id;
+    public Post() {}
+
+    public Post(String title, String body) {
         this.title = title;
         this.body = body;
     }
 
-    public Post() {
-    }
-
-    public Post(String title, String body) {
+    public Post(long id, String title, String body) {
+        this.id = id;
         this.title = title;
         this.body = body;
     }
@@ -58,9 +52,11 @@ public class Post {
     public void setBody(String body) {
         this.body = body;
     }
+
     public User getUser() {
         return user;
     }
+
     public void setUser(User user) {
         this.user = user;
     }
