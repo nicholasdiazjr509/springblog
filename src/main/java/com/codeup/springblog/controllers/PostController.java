@@ -101,14 +101,10 @@ public class PostController {
             // save the object with new values
             postsDao.save(postToEdit);
         }
-
         return "redirect:/posts";
 
     }
-
-    // For now, we need to use a GetMapping, that way, when we visit the page,
-    // our app can access the path variable, then delete the post, then redirect
-    // us back to the post index page.
+//
     @GetMapping("/posts/{id}/delete")
     public String delete(@PathVariable long id) {
         postsDao.deleteById(id);
